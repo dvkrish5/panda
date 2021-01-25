@@ -134,6 +134,15 @@
               <maxmemory>1g</maxmemory>
 		</configuration>
       </plugin>
+	<plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-release-plugin</artifactId>
+     <version>2.5.3</version>
+     <configuration>
+         <localCheckout>true</localCheckout>
+         <pushChanges>false</pushChanges>
+     </configuration>
+ </plugin>
 	    
           <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
