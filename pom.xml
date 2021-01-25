@@ -49,20 +49,26 @@
     <developerConnection>scm:git:https://github.com/dvkrish5/panda.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
-
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-        <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
+      <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-release-plugin</artifactId>
+             <version>2.5.1</version>
+         <dependencies>
+          <dependency>
+              <groupId>org.apache.maven.shared</groupId>
+              <artifactId>maven-invoker</artifactId>
+              <version>2.2</version>
+       </dependency>
+      </dependencies>
+   </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
@@ -92,6 +98,39 @@
           </execution>
         </executions>
       </plugin>
+	    <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.0</version>
+            <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+            </configuration>
+        </plugin>
+		<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <!--<version>3.2.0</version>-->
+            <configuration>
+                <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                <!--<doclint>none</doclint>-->
+            </configuration>
+        </plugin>
+  <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-compiler-plugin</artifactId>
+           <version>3.8.1</version>
+       <configuration>
+            <source>8</source>
+            <target>8</target>
+              <debug>true</debug>
+           <debuglevel>lines,vars,source</debuglevel> 
+      </configuration>
+  </plugin> 
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
 	<plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -103,33 +142,21 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
 		<configuration>
-		<additionalparam>-Xdoclint:none</additionalparam>
 		      <minmemory>128m</minmemory>
               <maxmemory>1g</maxmemory>
 		</configuration>
       </plugin>
-	  <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.5.1</version>
-            <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-            </configuration>
-        </plugin>
-	<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-         <version>3.0.0-M1</version>
-	    <configuration>
-	     <releaseProfiles>release</releaseProfiles>
-       </configuration>
-  </plugin>
+	    
           <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.7.1</version>
 		  </plugin>
+		
+		<plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
@@ -155,7 +182,6 @@
                   <serverId>nexus-releases</serverId>
                   <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
                   <skipStaging>true</skipStaging>
-				   <modelVersion>4.0.0</modelVersion>
                </configuration>
             </plugin>
          </plugins>
@@ -165,7 +191,6 @@
         <maven.compiler.target>11</maven.compiler.target>
 		<java.home>C:\Program Files\Java\jdk-15.0.1\binjavac</java.home>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.scm.id>panda</project.scm.id>
     </properties>
    </profile>
 </profiles>
