@@ -3,7 +3,7 @@ node{
     git 'https://github.com/dvkrish5/panda/new/master'
     }
     stage('compile-Package'){
-    sh 'mvn package'
+        sh "${mvnHome}/bin/mvn  package"
     }
     
     }
