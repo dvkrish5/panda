@@ -27,7 +27,7 @@ def call(String buildStatus = 'STARTED') {
 
   hipchatSend (color: color, notify: true, message: summary)
 
-  emailext (
+  emailtext (
       to: 'ashwath1219@gmail.com',
       subject: subject,
       body: details,
