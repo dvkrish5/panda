@@ -1,7 +1,8 @@
-post {
-always {
-  script {
-    if (currentBuild.currentResult == 'FAILURE') {
-      step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "ashwath1219@gmail.com", sendToIndividuals: true])
+ost {
+    failure {
+        mail to: 'ashwath1219@gmail.com',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
     }
-  }
+}
+
