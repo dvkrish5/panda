@@ -1,9 +1,10 @@
-node{
-    stage('SCM checkout'){
-    git 'https://github.com/dvkrish5/panda/new/master'
+pipeline {
+    agent { docker { image 'maven:3.3.3' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
     }
-    stage('compile-Package'){
-        sh "${mvnHome}/bin/mvn  package"
-    }
-    
-    }
+}
