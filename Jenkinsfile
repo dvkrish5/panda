@@ -5,15 +5,4 @@ pipeline {
             steps {
             }
         }
-        stage('Test') { 
-            steps {
-                // 
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                
-            }
-        }
-    }
-}
+        
