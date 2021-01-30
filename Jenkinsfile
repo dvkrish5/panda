@@ -1,8 +1,7 @@
 pipeline {  
      agent any  
      stages {  
-         stage('Test') {  
-              stage('Slack Notification'){
+         stage('Test') { 
                    slackSend baseUrl: 'https://hooks.slack.com/services/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/', botUser: true, channel: 'Jenkins-pipeline', color: 'green', message: 'welcome to happy home', notifyCommitters: true
          }  
              steps {  
