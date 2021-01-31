@@ -1,8 +1,7 @@
 pipeline {  
      agent any  
      stages {  
-         stage('Test') { 
-                   slackSend baseUrl: 'https://hooks.slack.com/services/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/'
+         stage('Test') {  
              steps {  
                  sh 'echo "Fail!"; exit 1'  
              }  
@@ -24,7 +23,6 @@ pipeline {
          changed {  
              echo 'This will run only if the state of the Pipeline has changed'  
              echo 'For example, if the Pipeline was previously failing but is now successful'  
-         }        
+         }  
      }  
  }
-}
